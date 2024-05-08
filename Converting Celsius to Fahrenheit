@@ -1,0 +1,3 @@
+temperature = float(input())
+fahrenheit = (temperature * 9/5) + 32
+print("{:.1f}".format(fahrenheit))
