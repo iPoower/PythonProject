@@ -2,8 +2,11 @@ temperature = float(input())
 fahrenheit = (temperature * 9/5) + 32
 print("{:.1f}".format(fahrenheit))
 
-temperature = float(input()) # This line prompts the user to enter a temperature in Celsius degrees. The `input()` function retrieves a string entered by the user, then `float()` converts it to a floating-point number to enable calculations.
+temperature = float(input()) # This line prompts the user to enter a temperature in Celsius degrees. 
+The `input()` function retrieves a string entered by the user, then `float()` converts it to a floating-point number to enable calculations.
 
-fahrenheit = (temperature * 9/5) + 32 # This line performs the conversion of temperature from Celsius to Fahrenheit using the conversion formula: multiplying the temperature in Celsius by 9/5, then adding 32.
+fahrenheit = (temperature * 9/5) + 32 # This line performs the conversion of temperature from Celsius to Fahrenheit 
+using the conversion formula: multiplying the temperature in Celsius by 9/5, then adding 32.
 
-print("{:.1f}".format(fahrenheit)) # This line prints the converted temperature in Fahrenheit with a precision of one digit after the decimal point using the `format()` method to format the output. The specification `"{:.1f}"` indicates that only one digit after the decimal point should be displayed.
+print("{:.1f}".format(fahrenheit)) # This line prints the converted temperature in Fahrenheit with a precision of one digit 
+after the decimal point using the `format()` method to format the output. The specification `"{:.1f}"` indicates that only one digit after the decimal point should be displayed.
