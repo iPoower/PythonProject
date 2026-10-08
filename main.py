@@ -1,40 +1,31 @@
-# Lean Python Go Work ! #
+"""Basic Python exercise: calculate the price of a shopping basket.
 
-# Price + Apple + #
+Run: python3 main.py
+"""
+from __future__ import annotations
 
-prices = {'apple': 0.75, 'egg': 0.50}
-cart = {
-    'apple': 1,
-    'egg': 6
-}
+from collections.abc import Mapping
 
-bill = sum(prices[item] * cart[item]
-           for item in cart)
 
-print(f'I have to pay {bill:.2f}')
--------------------------------------------------------------
+def calculate_total(prices: Mapping[str, float], quantities: Mapping[str, int]) -> float:
+    """Return the total rounded to cents; reject missing items and invalid quantities."""
+    total = 0.0
+    for item, quantity in quantities.items():
+        if item not in prices:
+            raise KeyError(f"Unknown item: {item}")
+        if not isinstance(quantity, int) or isinstance(quantity, bool) or quantity < 0:
+            raise ValueError(f"Invalid quantity for {item}: {quantity!r}")
+        if prices[item] < 0:
+            raise ValueError(f"Negative price for {item}")
+        total += prices[item] * quantity
+    return round(total, 2)
 
-Les parenthèses (()) sont utilisées dans Python pour définir des structures de données comme les listes, les tuples, les ensembles et les dictionnaires, ainsi que pour appeler des fonctions et des méthodes. Voici quelques utilisations courantes des parenthèses en Python :
 
-- **Définition de Structures de Données :**
-  - **Listes :** Les parenthèses sont utilisées pour définir une liste d'éléments. Par exemple :
-    ```python
-    my_list = [1, 2, 3]  # Définit une liste avec des crochets
-    ```
+def main() -> None:
+    prices = {"apple": 0.75, "egg": 0.50}
+    basket = {"apple": 1, "egg": 6}
+    print(f"I have to pay ${calculate_total(prices, basket):.2f}")
 
-  - **Tuples :** Les parenthèses sont utilisées pour définir un tuple (une séquence immuable d'éléments). Par exemple :
-    ```python
-    my_tuple = (1, 2, 3)  # Définit un tuple avec des parenthèses
-    ```
 
-  - **Ensembles :** Les parenthèses peuvent également être utilisées pour définir un ensemble en utilisant des accolades avec ou sans valeurs. Par exemple :
-    ```python
-    my_set = {1, 2, 3}  # Définit un ensemble avec des accolades
-    ```
-
-- **Appel de Fonctions et de Méthodes :**
-  Lorsque vous appelez une fonction ou une méthode en Python, vous utilisez des parenthèses pour entourer les arguments de la fonction. Par exemple :
-  ```python
-  result = my_function(arg1, arg2)  # Appel d'une fonction avec des arguments entre parenthèses
-  obj.method(arg1, arg2)  # Appel d'une méthode sur un objet avec des arguments entre parenthèses
-result = (x + y) * z  # Les parenthèses autour de (x + y) spécifient que l'addition est effectuée en premier
+if __name__ == "__main__":
+    main()
